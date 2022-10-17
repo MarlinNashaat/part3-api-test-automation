@@ -79,7 +79,7 @@ public class BookingApiTest {
 
     //Edit Booking
 
-    @Test(priority = 1)
+    @Test(priority = 1 , dependsOnMethods = "testCreateBooking")
     public void testEditBooking() {
         String endpoint = "https://restful-booker.herokuapp.com/booking/" + bookingId;
         String body = """
@@ -114,7 +114,7 @@ public class BookingApiTest {
     }
 
     //Read Booking
-    @Test(priority = 2)
+    @Test(priority = 2 , dependsOnMethods = "testEditBooking")
     public void testGetBooking() {
         String endpoint = "https://restful-booker.herokuapp.com/booking/" + bookingId;
 
@@ -136,7 +136,7 @@ public class BookingApiTest {
     }
 
     //Delete Booking
-    @Test(priority = 3)
+    @Test(priority = 3 , dependsOnMethods = "testGetBooking")
     public void testDeleteBooking() {
         String endpoint = "https://restful-booker.herokuapp.com/booking/" + bookingId;
 
